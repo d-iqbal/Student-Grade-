@@ -54,11 +54,13 @@ function mainMenu() {
 
         grades[0] = 40;
 
+
     } else if (selection == 'last50') {
         // Set the grade of the last student to 50. 
         outputEl.innerHTML = 'Last grade to 50';
 
-        grades[11]= 50;
+        grades[grades.length - 1]= 50;
+
 
     } else if (selection == 'random100') {
         // Set the grade of a random student to 100.
@@ -70,7 +72,10 @@ function mainMenu() {
         // Add a random grade between 0 and 100 to the end of the array.
         outputEl.innerHTML = 'Add random grade';
 
-
+        for (let i = 0; i < grades.length; i++) {
+            grades.push(Math.random(grades))
+        }
+        
 
     } else if (selection == 'removeLast') {
         // Remove the last grade.
@@ -78,28 +83,32 @@ function mainMenu() {
 
         grades.pop();
 
+
     } else if (selection == 'count50') {
         // Count how many grades are below 50.  Output the result.
         outputEl.innerHTML = 'Count grades below 50';
 
-        count = 0;
+        let count = 0;
         for (let i = 0; i < grades.length; i++) {
-            if (grades[i] <= 50) {
-                count--;
+            if (grades[i] < 50) {
+                count++;
             }
         }
-        return count;
+        outputEl.innerHTML = "Count grades below 50 =" + count;
+
 
     } else if (selection == 'change50') {
         // Change all grades that are below 50 to be equal to 50.
-        outputEl.innerHTML = 'Change low grades to 50';
+        outputEl.innerHTML = 'Be equal to 50';
 
+        for (let i = 0; i < grades.length; i++) {
+            grades[i] = 50;
+        }
 
 
     } else if (selection == 'increase10') {
         // Increase each grade by 10%. 1.1
         outputEl.innerHTML = 'Increase all grades by 10%'; 
-
 
         for (let i = 0; i < grades.length; i++) {
             grades[i] = grades[i] * 1.1;
@@ -110,7 +119,6 @@ function mainMenu() {
         // Decrease each grade by 10%. 0.9
         outputEl.innerHTML = 'Decrease all grades by 10%';
 
-
         for (let i = 0; i < grades.length; i++) {
             grades[i] = grades[i] * 0.9;
         }
@@ -120,8 +128,5 @@ function mainMenu() {
         // Remove all grades that are below 50.
         outputEl.innerHTML = 'Remove grades below 50';
         
-      
-
-
     } 
 }
