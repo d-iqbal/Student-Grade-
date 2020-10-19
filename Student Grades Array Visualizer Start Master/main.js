@@ -67,15 +67,21 @@ function mainMenu() {
         outputEl.innerHTML = 'Random grade to 100';
 
         
+        grades.push(Math.randomInt());
 
+
+        function randomInt(high, low) {
+            Math.random();
+        }
+
+
+        
     } else if (selection == 'addRandom') {
         // Add a random grade between 0 and 100 to the end of the array.
         outputEl.innerHTML = 'Add random grade';
-
-        for (let i = 0; i < grades.length; i++) {
-            grades.push(Math.random(grades))
-        }
         
+        grades.push(Math.random() * 100);
+
 
     } else if (selection == 'removeLast') {
         // Remove the last grade.
@@ -102,8 +108,12 @@ function mainMenu() {
         outputEl.innerHTML = 'Be equal to 50';
 
         for (let i = 0; i < grades.length; i++) {
-            grades[i] = 50;
+            grades[i] = grades[i] < 50;
         }
+
+
+
+
 
 
     } else if (selection == 'increase10') {
@@ -127,6 +137,10 @@ function mainMenu() {
     } else if (selection == 'remove50') {
         // Remove all grades that are below 50.
         outputEl.innerHTML = 'Remove grades below 50';
-        
+
+        for (let i = 0; i < grades.length; i++) {
+            grades[i] = grades[i] > 50;
+        }
+
     } 
 }
