@@ -65,15 +65,10 @@ function mainMenu() {
     } else if (selection == 'random100') {
         // Set the grade of a random student to 100.
         outputEl.innerHTML = 'Random grade to 100';
-
-        
-        grades.push(Math.randomInt());
-
-
-        function randomInt(high, low) {
-            Math.random();
-        }
-
+      
+        randomIndex = randomInt(0, grades.length);
+        console.log(randomIndex);
+        grades[randomIndex]= 100;
 
         
     } else if (selection == 'addRandom') {
@@ -108,13 +103,10 @@ function mainMenu() {
         outputEl.innerHTML = 'Be equal to 50';
 
         for (let i = 0; i < grades.length; i++) {
-            grades[i] = grades[i] < 50;
+            if (grades[i] < 50) {
+                grades[i] = 50 
+            }
         }
-
-
-
-
-
 
     } else if (selection == 'increase10') {
         // Increase each grade by 10%. 1.1
